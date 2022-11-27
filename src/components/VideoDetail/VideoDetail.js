@@ -4,7 +4,7 @@ import { fetchSelectedData } from '../../apis/index'
 import { Store } from '../../store/index'
 import VideoPlay from '../VIdeoPlay/VIdeoPlay'
 import Style from './VideoDetail.module.scss'
-import Linkify from '.react-linkify'
+import Linkify from 'react-linkify'
 
 const VideoDetail = () => {
   const { globalState, setGlobalState } = useContext(Store)
@@ -30,7 +30,9 @@ const VideoDetail = () => {
       <p>{globalState.selected.snippet.title}</p>
       <hr />
 {/* <pre>タグを使うと整形済みのテキストをそのまま表示できる */}
-      <pre>{globalState.selected.snippet.description}</pre>
+      <Linkify>
+        <pre>{globalState.selected.snippet.description}</pre>
+      </Linkify>
     </div>
   ) : (<span>no data</span>)
 }
